@@ -33,7 +33,7 @@ The link to give you the signature with the default image is
 **test.server.com/torn-signature.php?id=PLAYERS_TORN_ID&img=IMAGE_NUMBER
 
 
-#### If you do like this script, and find it usefull, i accept donations in the form of IG currency at hexxeh[2428617] . 
+#### If you do like this script, and find it useful, i accept donations in the form of IG currency at hexxeh[2428617] . 
 
 #### If you have any questions, don't hesitate to contact me ingame by mail. 
 

@@ -2,6 +2,7 @@
 //set faction ID and faction name here.
 $factionid='ADD_FACTION_ID_HERE';
 $factioname='ADD_FACTION_NAME_HERE';
+
 //load random api key from list
 require 'includes/'.$factionid.'-apikeys.php';
 $randmax = count($apikeys);

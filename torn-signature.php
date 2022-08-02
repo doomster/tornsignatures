@@ -35,8 +35,8 @@ $black = imagecolorallocate($img, 0, 0, 0);
 $font = "includes/UBUNTU-MEDIUM.TTF";
 $rankfont = "includes/PNR.ttf";
 //Add the text
-$txt = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$stat ;
-$txt2 = $status->faction->position.' of '.$factionname ;
+$txt = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$status->rank.'  |  '.$status->status->state ;
+$txt2 = $status->faction->position.' of '.$faction_name ;
 //Calculate text size to center it
 $image_width = imagesx($img);
 $text_box = imagettfbbox($fontsize,$angle,$font,$txt);

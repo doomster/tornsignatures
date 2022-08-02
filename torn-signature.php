@@ -2,6 +2,7 @@
 //set faction ID and faction name here.
 $factionid='ADD_FACTION_ID_HERE';
 $factioname='ADD_FACTION_NAME_HERE';
+
 //load random api key from list
 require 'includes/'.$factionid.'-apikeys.php';
 $randmax = count($apikeys);
@@ -35,7 +36,7 @@ $black = imagecolorallocate($img, 0, 0, 0);
 $font = "includes/UBUNTU-MEDIUM.TTF";
 $rankfont = "includes/PNR.ttf";
 //Add the text
-$txt = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$stat ;
+$txt = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$status->rank.'  |  '.$status->status->state;
 $txt2 = $status->faction->position.' of '.$factionname ;
 //Calculate text size to center it
 $image_width = imagesx($img);

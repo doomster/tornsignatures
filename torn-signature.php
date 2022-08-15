@@ -19,38 +19,38 @@ $faction_name = $status->faction->faction_name;
 //check if he is a member of the faction. Allways change the name here according to the faction.
 if ($faction_check != $factionid) { die('Not a member of '.$factioname); }
 // REQUESTS COUNTER (uncomment next four lines to get a counter for the requests, for usage purposes)
-//$file = 'requestslog.txt';
+//$file = 'requestslog.txt_status';
 //$fdata = file_get_contents ( $file );
 //$fdata = intval($fdata) + 1;
 //file_put_contents($file, $fdata);
 
 // Firstly open the image
-$selectedimage = 'includes/'.$factionid.'-'.$selectedimage.'.png';
-$img = imagecreatefrompng($selectedimage);
+$img_background = imagecreatefrompng('includes/'.$factionid.'-'.$selectedimage.'.png');
 // Set text properties
-$fontsize = 10;
-$rankfontsize = 30;
+$font_status_size = 10;
+$font_rank_size = 30;
 $angle = 0;
-$white = imagecolorallocate($img, 255, 255, 255);
-$black = imagecolorallocate($img, 0, 0, 0);
-$font = "includes/UBUNTU-MEDIUM.TTF";
-$rankfont = "includes/PNR.ttf";
+$white = imagecolorallocate($img_background, 255, 255, 255);
+$black = imagecolorallocate($img_background, 0, 0, 0);
+$font_status = "includes/UBUNTU-MEDIUM.TTF";
+$font_rank = "includes/PNR.ttf";
 //Add the text
-$txt = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$status->rank.'  |  '.$status->status->state;
-$txt2 = $status->faction->position.' of '.$factionname ;
+$txt_status = $status->name.'['.$status->player_id.']  |  Level:'.$status->level.'  |  Age:'.$status->age.'  |  '.$status->rank.'  |  '.$status->status->state;
+$txt_rank = $status->faction->position.' of '.$factionname ;
 //Calculate text size to center it
-$image_width = imagesx($img);
-$text_box = imagettfbbox($fontsize,$angle,$font,$txt);
-$text2_box = imagettfbbox($rankfontsize,$angle,$rankfont,$txt2);
-$text_width = $text_box[2]-$text_box[0];
-$text2_width = $text2_box[2] - $text2_box[0];
-$x = ($image_width/2) - ($text_width/2);
-$x2 = ($image_width/2) - ($text2_width/2);
+$image_width = imagesx($img_background);
+$txt_box_status = imagettfbbox($font_status_size,$angle,$font_status,$txt_status);
+$txt_box_rank = imagettfbbox($font_rank_size,$angle,$font_rank,$txt_rank);
+$text_width = $txt_box_status[2]-$txt_box_status[0];
+$text2_width = $txt_box_rank[2] - $txt_box_rank[0];
+$x_status = ($image_width/2) - ($text_width/2);
+$x_rank = ($image_width/2) - ($text2_width/2);
 //Write text to image
-imagettftext($img, $fontsize, $angle, $x, 15, $white, $font, $txt);
-imagettftext($img, $rankfontsize, $angle, $x2, 75, $white, $rankfont, $txt2);
+imagettftext($img_background, $font_status_size, $angle, $x_status, 15, $white, $font_status, $txt_status);
+imagettftext($img_background, $font_rank_size, $angle, $x_rank, 75, $white, $font_rank, $txt_rank);
 //Image Output
 header('Content-type: image/png');
-imagepng($img);
-imagedestroy($img);
+imagepng($img_background);
+imagedestroy($img_background);
 ?>
+

@@ -7,7 +7,7 @@ Basic Live signature creation script for Torn.
 * PNG background images 600x100 size named as *FACTION_ID*-1.png *FACTION_ID*-2.png etc. your member will decide which image to use by changing the link.  
 
 ## what it does 
-The script chooses a random api key from the array on each image request, it then requests the user data from api. It checks if the user is a member of the faction, loads the image, imprints the text data to the image and serves the image as an output. If you use the link as an "insert image" link in torn, each time this image is to be displayed , the script will update the image with a new updated version.
+The script chooses a random api key from the array on each image request, it then requests the user data from api. It checks if the user is a member of the faction, loads the image, imprints the text data to the image and serves the image as an output. If you use the link as an "insert image" link in torn, each time this image is to be displayed , the script will update the image with a new updated version (now has a 10seconds buffer). 
 
 The more requests the more API keys are needed in order not to get the key "blocked" and get an empty response. for a full faction you will need around 10 keys. The more the better.
 

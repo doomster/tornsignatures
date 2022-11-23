@@ -1,8 +1,21 @@
 <?php
+
 //set faction ID and faction name here.
 $factionid='ADD_FACTION_ID_HERE';
 $factioname='ADD_FACTION_NAME_HERE';
-
+//caching time of signature image so that you dont spam the server with requests. 
+$cachetime = 10;
+//The path and filename that we give to the image when we cache it.
+$cachefile = 'cache/' . basename($_SERVER['PHP_SELF']) .'.'.$_GET['id'].'.png';
+//$cachefile = 'cache/sign_cache_'.$_GET['id'].'.jpg';
+//Check to see if this image already exists.
+//if(is_readable($filepath)){
+if (file_exists($cachefile) && time() - $cachetime <= filemtime($cachefile)) {
+    //The file exists, so lets display it.
+    header("Content-type: image/png");
+    readfile($cachefile);
+    exit;
+}
 //load random api key from list
 require 'includes/'.$factionid.'-apikeys.php';
 $randmax = count($apikeys);
@@ -48,6 +61,8 @@ $x_rank = ($image_width/2) - ($text2_width/2);
 //Write text to image
 imagettftext($img_background, $font_status_size, $angle, $x_status, 15, $white, $font_status, $txt_status);
 imagettftext($img_background, $font_rank_size, $angle, $x_rank, 75, $white, $font_rank, $txt_rank);
+//Save the image to the cached filepath location.
+imagepng($img, $cachefile);
 //Image Output
 header('Content-type: image/png');
 imagepng($img_background);
